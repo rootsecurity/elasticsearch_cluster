@@ -1,0 +1,30 @@
+### MANAGED BY PUPPET ###
+---
+cluster: 
+  name: chain_security_es
+generate_number_parts: false
+generate_word_parts: false
+http: 
+  cors: 
+    enabled: true
+  port: 10200
+node: 
+  name: YHF1I01-209018011-10200
+threadpool:
+  bulk:
+    type: fixed
+    size: 320
+    queue_size: 5000
+  index:
+    type: fixed
+    size: 160
+    queue_size: 5000
+  search:
+    type: fixed
+    size: 160
+    queue_size: 5000
+path: 
+  data: /data/elasticsearch_data1/10200
+split_on_case_change: false
+split_on_numerics: false
+stem_english_possessive: false
