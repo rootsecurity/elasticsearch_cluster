@@ -13,7 +13,7 @@ def sendMail(mailmsg,tomail,title):
     msg['Reply-To'] = femail
     body=email.MIMEText.MIMEText(mailmsg,_charset='utf8')
     msg.attach(body)
-    smtp = smtplib.SMTP('your mail sev ip','25')
+    smtp = smtplib.SMTP('your mail srv ip','25')
     smtp.login('user@server.com', 'password') 
     smtp.sendmail(femail,mail_recv,msg.as_string())
     smtp.close()
