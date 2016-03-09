@@ -1,7 +1,7 @@
 ### MANAGED BY PUPPET ###
 ---
 cluster: 
-  name: chain_security_es
+  name: ffan_security_es
 generate_number_parts: false
 generate_word_parts: false
 http: 
@@ -9,7 +9,9 @@ http:
     enabled: true
   port: 10200
 node: 
-  name: YHF1I01-209018011-10200
+  name: BJC3S-M910V-G131-120
+  master: false
+  data: false
 threadpool:
   bulk:
     type: fixed
@@ -24,7 +26,31 @@ threadpool:
     size: 160
     queue_size: 5000
 path: 
-  data: /data/elasticsearch_data1/10200
+  data: /data/es/elasticsearch_data3/10200
+  repo: /data/es/elasticsearch_backup
 split_on_case_change: false
 split_on_numerics: false
 stem_english_possessive: false
+
+# Discovery
+discovery.zen.minimum_master_nodes: 1
+discovery.zen.ping.timeout: 10s
+discovery.zen.ping.multicast.enabled: false
+discovery.zen.ping.unicast.hosts: ["172.26.32.34:9300","172.26.18.11:9300","172.26.18.12:9300","172.26.18.13:9300","172.26.10.195:9300","172.26.100.25:9300"]
+
+# Index
+index.search.slowlog.level: TRACE
+index.search.slowlog.threshold.query.warn: 10s
+index.search.slowlog.threshold.query.info: 5s
+index.search.slowlog.threshold.query.debug: 2s
+index.search.slowlog.threshold.query.trace: 500ms
+
+index.search.slowlog.threshold.fetch.warn: 1s
+index.search.slowlog.threshold.fetch.info: 800ms
+index.search.slowlog.threshold.fetch.debug: 500ms
+index.search.slowlog.threshold.fetch.trace: 200ms
+
+index.merge.scheduler.max_thread_count: 1
+index.translog.flush_threshold_size: 1024mb
+
+index.refresh_interval: 60s
